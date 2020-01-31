@@ -42,6 +42,34 @@ class LinkedList:
     # if we've gotten here, then the target node isn't in our list
     return False
 
+  
+  
+  
   def reverse_list(self):
-    # TO BE COMPLETED
-    pass
+   '''
+   In the case of an empty list
+   '''
+   if self.head is None or self.head.get_next() is None:
+     return
+   else:
+     '''
+     Otherwise we want to take a list from 1,2,3, and turn it into 3,2,1
+     '''
+     left = self.head
+     temp = left.get_next()
+     left.set_next(None)
+     while temp and temp.get_next():
+       '''
+       Using a temporary, will set the left.get_next to the temporary, then the temporary to the right, then reverse through
+       the entire list. Will loop until there are no more to the right of it.
+       '''
+       right = temp.get_next()
+       temp.set_next(left)
+       left = temp
+       temp = right
+     '''
+     Setting New Head 
+     '''
+     temp.set_next(left) 
+     self.head = temp
+  
